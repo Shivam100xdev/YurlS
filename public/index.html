@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube to Spotify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="mark-row">
+      <svg class="mark" width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4 6L15 14L4 22V6Z" fill="var(--yt-red)" />
+        <rect x="17" y="10" width="3" height="8" rx="1.5" fill="var(--sp-green)" />
+        <rect x="22" y="6" width="3" height="16" rx="1.5" fill="var(--sp-green)" />
+      </svg>
+      <span class="mark-text">yt2sp</span>
+    </header>
+
+    <h1>Turn a YouTube playlist into a Spotify one.</h1>
+    <p class="lede">Paste a link, connect your Spotify account, and it finds each track and drops them into a new playlist for you.</p>
+
+    <section class="card">
+      <div class="connect-row">
+        <button id="connect-btn" class="btn btn-outline" type="button">connect spotify</button>
+        <span class="connect-hint">needed once, so the playlist can be saved to your account</span>
+      </div>
+
+      <form id="convert-form">
+        <label class="field">
+          <span class="field-label">youtube link</span>
+          <input id="yt-url" type="url" placeholder="https://www.youtube.com/playlist?list=..." required autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">playlist name <span class="field-optional">(optional)</span></span>
+          <input id="playlist-name" type="text" placeholder="leave blank to reuse the youtube title" maxlength="100" autocomplete="off" />
+        </label>
+
+        <button id="convert-btn" class="btn btn-primary" type="submit" disabled>convert</button>
+      </form>
+    </section>
+
+    <section class="log-panel" aria-live="polite">
+      <div class="log-panel-head">log</div>
+      <div id="log" class="log"></div>
+    </section>
+
+    <section id="result" class="result" hidden></section>
+
+    <footer class="foot">
+      <p>Runs on the YouTube Data API and the Spotify Web API. Nothing you paste here is stored - see the README for setup.</p>
+    </footer>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
